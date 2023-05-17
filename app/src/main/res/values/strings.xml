@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ConsultorioPGZ</string>
+    <string name="app_name">Consultorio PGZ</string>
+    <string name="title_about">Acerca de</string>
 </resources>
