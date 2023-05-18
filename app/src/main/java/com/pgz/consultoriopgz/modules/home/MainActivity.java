@@ -1,4 +1,4 @@
-package com.pgz.consultoriopgz.modules;
+package com.pgz.consultoriopgz.modules.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.pgz.consultoriopgz.R;
 import com.pgz.consultoriopgz.modules.about.AboutActivity;
+import com.pgz.consultoriopgz.modules.client.view.ClientActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,10 +34,20 @@ public class MainActivity extends AppCompatActivity {
         cardAbout.setOnClickListener(v -> {
             goToAbout();
         });
+
+        cardClient.setOnClickListener(v -> {
+            goToClient();
+        });
     }
 
     private void goToAbout(){
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
+
+    private void goToClient(){
+        Intent intent = new Intent(this, ClientActivity.class);
+        startActivity(intent);
+    }
+
 }

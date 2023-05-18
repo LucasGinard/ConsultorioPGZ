@@ -8,7 +8,7 @@ import com.pgz.consultoriopgz.databinding.ActivityAboutBinding
 
 class AboutActivity: AppCompatActivity() {
 
-    lateinit var binding:ActivityAboutBinding
+    private lateinit var binding:ActivityAboutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
