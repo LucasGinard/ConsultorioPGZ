@@ -10,6 +10,7 @@ import android.view.View;
 import com.pgz.consultoriopgz.R;
 import com.pgz.consultoriopgz.modules.about.AboutActivity;
 import com.pgz.consultoriopgz.modules.client.view.ClientActivity;
+import com.pgz.consultoriopgz.modules.schedule.view.ScheduleAppointmentActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         cardClient.setOnClickListener(v -> {
             goToClient();
         });
+
+        cardSchedule.setOnClickListener(v -> {
+            goToSchedule();
+        });
     }
 
     private void goToAbout(){
@@ -47,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void goToClient(){
         Intent intent = new Intent(this, ClientActivity.class);
+        startActivity(intent);
+    }
+
+    private void goToSchedule(){
+        Intent intent = new Intent(this, ScheduleAppointmentActivity.class);
         startActivity(intent);
     }
 

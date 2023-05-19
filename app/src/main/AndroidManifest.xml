@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".modules.about.AboutActivity"/>
         <activity android:name=".modules.client.view.ClientActivity"/>
+        <activity android:name=".modules.schedule.view.ScheduleAppointmentActivity"/>
     </application>
 
 </manifest>
