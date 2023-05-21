@@ -2,6 +2,7 @@ package com.pgz.consultoriopgz.modules.client.presenter
 
 import com.pgz.consultoriopgz.modules.client.model.ClientModel
 import com.pgz.consultoriopgz.modules.client.model.ContractClient
+import com.pgz.consultoriopgz.modules.utils.SessionCache
 
 class ClientPresenter(var view:ContractClient.View):ContractClient.Presenter {
 
@@ -17,6 +18,7 @@ class ClientPresenter(var view:ContractClient.View):ContractClient.Presenter {
 
     override fun addClient() {
         val newClient = ClientModel(name,lastName,idNumber,cellphone)
+        SessionCache.listClients.add(newClient)
         view.goHome()
     }
 
