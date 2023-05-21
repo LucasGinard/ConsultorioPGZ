@@ -4,6 +4,7 @@ interface ContractClient {
     interface View{
         fun isValidNewClient()
         fun isNotValidNewClient()
+        fun goHome()
     }
 
     interface Presenter{

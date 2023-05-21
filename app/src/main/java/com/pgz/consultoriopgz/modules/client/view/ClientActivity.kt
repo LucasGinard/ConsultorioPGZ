@@ -1,19 +1,15 @@
 package com.pgz.consultoriopgz.modules.client.view
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.pgz.consultoriopgz.R
 import com.pgz.consultoriopgz.databinding.ActivityClientBinding
 import com.pgz.consultoriopgz.modules.client.model.ContractClient
 import com.pgz.consultoriopgz.modules.client.presenter.ClientPresenter
-import java.util.Timer
 
 class ClientActivity : AppCompatActivity(), ContractClient.View {
 
@@ -150,5 +146,10 @@ class ClientActivity : AppCompatActivity(), ContractClient.View {
 
     override fun isNotValidNewClient() {
         binding.btnAddClient.isEnabled = false
+    }
+
+    override fun goHome() {
+        Toast.makeText(this,"Paciente agregado",Toast.LENGTH_LONG).show()
+        finish()
     }
 }

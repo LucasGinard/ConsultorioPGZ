@@ -1,5 +1,6 @@
 package com.pgz.consultoriopgz.modules.client.presenter
 
+import com.pgz.consultoriopgz.modules.client.model.ClientModel
 import com.pgz.consultoriopgz.modules.client.model.ContractClient
 
 class ClientPresenter(var view:ContractClient.View):ContractClient.Presenter {
@@ -9,31 +10,41 @@ class ClientPresenter(var view:ContractClient.View):ContractClient.Presenter {
     var isValidId = false
     var isValidNumber = false
 
+    var name:String = ""
+    var lastName:String = ""
+    var cellphone:String = ""
+    var idNumber:Int = 0
+
     override fun addClient() {
-        TODO("Not yet implemented")
+        val newClient = ClientModel(name,lastName,idNumber,cellphone)
+        view.goHome()
     }
 
     override fun validateName(nameInput: String): Boolean {
+        name = nameInput
         isValidName = validateInputNotEmptyOrBlank(nameInput)
-        disableButtonAddNewClient(isValidName)
+        validateIfIsDisableButtonAddNewClient(isValidName)
         return isValidName
     }
 
     override fun validateLastName(lastNameInput: String): Boolean {
+        lastName = lastNameInput
         isValidNameLastr = validateInputNotEmptyOrBlank(lastNameInput)
-        disableButtonAddNewClient(isValidNameLastr)
+        validateIfIsDisableButtonAddNewClient(isValidNameLastr)
         return isValidNameLastr
     }
 
     override fun validateId(idInput: String): Boolean {
+        idNumber = idInput.toInt()
         isValidId = validateInputNotEmptyOrBlank(idInput)
-        disableButtonAddNewClient(isValidId)
+        validateIfIsDisableButtonAddNewClient(isValidId)
         return isValidId
     }
 
     override fun validateNumber(numberInput: String): Boolean {
+        cellphone = numberInput
         isValidNumber = validateInputNotEmptyOrBlank(numberInput)
-        disableButtonAddNewClient(isValidNumber)
+        validateIfIsDisableButtonAddNewClient(isValidNumber)
         return isValidNumber
     }
 
@@ -41,7 +52,7 @@ class ClientPresenter(var view:ContractClient.View):ContractClient.Presenter {
         return input.isNotEmpty()
     }
 
-    private fun disableButtonAddNewClient(isEnable:Boolean){
+    private fun validateIfIsDisableButtonAddNewClient(isEnable:Boolean){
         if (!isEnable) view.isNotValidNewClient()
     }
 
