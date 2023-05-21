@@ -60,55 +60,99 @@
             android:id="@+id/spinnerClients"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
             android:spinnerMode="dialog" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/ConsultaTextField"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginTop="8dp"
-            android:hint="Consulta con :"
-            app:startIconDrawable="@drawable/ic_person">
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextNumberClient"
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_doctor" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/doctortextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:theme="@style/ThemeOverlay.Material3.TextInputEditText">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextDoctor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:focusable="false"
+                    android:hint="Seleccione un Doctor:"
+                    android:inputType="none" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/FechaTextField"
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginTop="8dp"
-            android:hint="Fecha de Consulta :"
-            app:startIconDrawable="@android:drawable/ic_menu_my_calendar">
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/fTextName"
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_schedule" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/datetextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="date" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:theme="@style/ThemeOverlay.Material3.TextInputEditText">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/HoraTextField"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:focusable="false"
+                    android:hint="Seleccione una Fecha :"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginTop="8dp"
-            android:hint="Hora de Consulta :"
-            app:startIconDrawable="@android:drawable/ic_lock_idle_alarm">
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/hTextName"
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_time" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/timeTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="time" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:theme="@style/ThemeOverlay.Material3.TextInputEditText">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_arrow_down"
+                    android:focusable="false"
+                    android:hint="Seleccione una Hora :"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/btnLimpiar"
