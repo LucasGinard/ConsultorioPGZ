@@ -5,7 +5,10 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.widget.DatePicker
 import android.widget.TimePicker
+import com.pgz.consultoriopgz.modules.client.model.ClientModel
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentContract
+import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentModel
+import com.pgz.consultoriopgz.modules.utils.SessionCache
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -13,7 +16,10 @@ import java.util.Locale
 
 class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): ScheduleAppointmentContract.Presenter {
 
-    var dateSelected:Date ?= null
+    var dateSelected:String ?= null
+    var timeSelected:String ?= null
+    var selectClient:ClientModel ?= null
+    var selectDoctor:String ?= null
     override fun showDatePicker(context: Context) {
         val calendar = Calendar.getInstance()
 
@@ -22,9 +28,8 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
             { _: DatePicker, year: Int, month: Int, day: Int ->
                 val selectedCalendar = Calendar.getInstance()
                 selectedCalendar.set(year, month, day)
-                dateSelected = selectedCalendar.time
-                val formattedDate = formatDate(dateSelected ?: Date())
-                view.setDateSelected(formattedDate)
+                dateSelected = formatDate(selectedCalendar.time ?: Date())
+                view.setDateSelected(dateSelected ?: "")
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
@@ -50,6 +55,7 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
                 calendar.set(Calendar.MINUTE, minute)
                 val selectedTime = calendar.time
                 val formattedTime = formatTime(selectedTime)
+                timeSelected = formattedTime
                 view.setTimeSelected(formattedTime)
             },
             calendar.get(Calendar.HOUR_OF_DAY),
@@ -58,6 +64,11 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
         )
 
         timePickerDialog.show()
+    }
+
+    override fun addNewScheduleAppointment() {
+        SessionCache.listSchedules.add(ScheduleAppointmentModel(selectClient ,selectDoctor,dateSelected,timeSelected))
+        view.goHome()
     }
 
     private fun formatTime(date: Date): String {

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.pgz.consultoriopgz.R
@@ -53,6 +54,10 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
         binding.editTextTime.setOnClickListener {
             presenter.showTimePicker(this)
         }
+
+        binding.btnAddSchedule.setOnClickListener {
+            presenter.addNewScheduleAppointment()
+        }
     }
 
     override fun setDateSelected(date:String) {
@@ -61,6 +66,11 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
 
     override fun setTimeSelected(time: String) {
         binding.editTextTime.setText(time)
+    }
+
+    override fun goHome() {
+        Toast.makeText(this,"Cita registrada exitosamente", Toast.LENGTH_LONG).show()
+        finish()
     }
 
     private fun configureSpinners(){
@@ -76,17 +86,27 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
                     position: Int,
                     id: Long
                 ) {
-                    val selectedClient = parent.adapter.getItem(position) as ClientModel
-                    binding.editTextClients.setText("${selectedClient.firstName} ${selectedClient.lastName}")
+                    presenter.selectClient = parent.adapter.getItem(position) as ClientModel
+                    binding.editTextClients.setText("${presenter.selectClient?.firstName} ${presenter.selectClient?.lastName}")
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
 
-        val listaCadenas = listOf("Hector", "Richard", "Lucas")
-        val adapterDoctors = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaCadenas)
+        val adapterDoctors = ArrayAdapter(this, android.R.layout.simple_spinner_item, SessionCache.listDoctors)
         adapterDoctors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerDoctors.adapter = adapterDoctors
+
+        binding.spinnerDoctors.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                presenter.selectDoctor = SessionCache.listDoctors[position]
+                binding.editTextDoctor.setText(presenter.selectDoctor)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
 
     }
 }

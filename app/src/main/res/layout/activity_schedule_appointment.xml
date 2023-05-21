@@ -175,7 +175,7 @@
             app:iconTint="@color/design_default_color_primary" />
 
         <Button
-            android:id="@+id/btnAddClient"
+            android:id="@+id/btnAddSchedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
