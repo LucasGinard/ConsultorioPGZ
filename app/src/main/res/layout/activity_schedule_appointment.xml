@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,7 +15,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:text="@string/title_form"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -25,7 +37,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header">
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
 
         <LinearLayout
             android:id="@+id/sectionClient"
@@ -68,8 +80,8 @@
             android:id="@+id/sectionDoctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="8dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -106,8 +118,8 @@
             android:id="@+id/sectionDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="8dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -137,8 +149,8 @@
             android:id="@+id/sectionTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="8dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView

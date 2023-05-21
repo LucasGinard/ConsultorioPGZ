@@ -134,7 +134,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/roboto_condensed_regular"
-                    android:text="Lista de citas"
+                    android:text="@string/title_list"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
