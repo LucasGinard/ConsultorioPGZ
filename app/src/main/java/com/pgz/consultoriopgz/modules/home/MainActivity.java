@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         cardSchedule.setOnClickListener(v -> {
             goToSchedule();
         });
+
+
     }
 
     private void goToAbout(){
@@ -59,5 +61,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ScheduleAppointmentActivity.class);
         startActivity(intent);
     }
+
+
 
 }
