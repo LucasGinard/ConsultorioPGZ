@@ -6,4 +6,9 @@
     <string name="title_schedule">Agendar Cita</string>
     <string name="title_lista">Citas Agendadas</string>
 
+    <string name="input_name">Nombre</string>
+    <string name="input_last_name">Apellido</string>
+    <string name="input_id">Numero de Cedula de identidad</string>
+    <string name="input_number">Numero de teléfono</string>
+
 </resources>

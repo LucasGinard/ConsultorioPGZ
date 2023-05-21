@@ -60,7 +60,7 @@
                     android:id="@+id/nameTextField"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nombre"
+                    android:hint="@string/input_name"
                     app:startIconDrawable="@drawable/ic_person">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Apellido"
+                    android:hint="@string/input_last_name"
                     app:startIconDrawable="@drawable/ic_person">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Numero de Cedula"
+                    android:hint="@string/input_id"
                     app:startIconDrawable="@drawable/ic_identifier">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Numero de teléfono"
+                    android:hint="@string/input_number"
                     app:startIconDrawable="@android:drawable/stat_sys_speakerphone">
 
                     <com.google.android.material.textfield.TextInputEditText
