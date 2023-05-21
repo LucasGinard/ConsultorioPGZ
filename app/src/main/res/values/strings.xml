@@ -2,9 +2,9 @@
     <string name="app_name">Consultorio PGZ</string>
 
     <string name="title_about">Acerca de</string>
-    <string name="title_client">Agregar Familiar</string>
-    <string name="title_schedule">Agendar Cita</string>
-    <string name="title_list">Citas Agendadas</string>
+    <string name="title_client">Registrar Usuario</string>
+    <string name="title_schedule">Registro Medicamentos</string>
+    <string name="title_list">Listado de Medicamentos</string>
 
     <string name="title_form">Complete el formulario:</string>
     <string name="input_name">Nombre</string>

@@ -43,9 +43,6 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
             binding.spinnerClients.performClick()
         }
 
-        binding.editTextDoctor.setOnClickListener {
-            binding.spinnerDoctors.performClick()
-        }
 
         binding.editTextDate.setOnClickListener {
             presenter.showDatePicker(this)
@@ -63,7 +60,6 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
             binding.editTextDate.setText("")
             binding.editTextTime.setText("")
             binding.editTextClients.setText("")
-            binding.editTextDoctor.setText("")
             presenter.cleanInputs()
         }
     }
@@ -111,22 +107,5 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
-
-        val adapterDoctors = ArrayAdapter(this, android.R.layout.simple_spinner_item, SessionCache.listDoctors)
-        adapterDoctors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinnerDoctors.adapter = adapterDoctors
-
-        binding.spinnerDoctors.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                presenter.selectDoctor = SessionCache.listDoctors[position]
-                presenter.validateFormSchedule()
-                binding.editTextDoctor.setText(presenter.selectDoctor)
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-        }
-
     }
 }
