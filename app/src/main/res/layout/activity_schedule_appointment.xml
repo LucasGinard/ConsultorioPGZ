@@ -17,62 +17,60 @@
 
 
     <LinearLayout
-        android:layout_width="352dp"
-        android:layout_height="622dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/CedulaeField"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Cédula :"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            app:startIconDrawable="@drawable/ic_identifier">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_client" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextLastName"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number|numberSigned"/>
+                android:fontFamily="@font/roboto_condensed_bold"
+                android:text="Seleccione un paciente:"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:theme="@style/ThemeOverlay.Material3.TextInputEditText">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextClients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_arrow_down"
+                android:focusable="false"
+                android:hint="Seleccione un paciente:"
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/PacienteTextField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Nombre del Paciente :"
-            app:startIconDrawable="@drawable/ic_person">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextNumberPaciente"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TelefonoTextField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Nº de Teléfono :"
-            app:startIconDrawable="@android:drawable/stat_sys_speakerphone">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextIdClient"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number|numberSigned" />
-        </com.google.android.material.textfield.TextInputLayout>
-
+        <Spinner
+            android:id="@+id/spinnerClients"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:spinnerMode="dialog" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ConsultaTextField"
@@ -86,7 +84,7 @@
                 android:id="@+id/editTextNumberClient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"/>
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
