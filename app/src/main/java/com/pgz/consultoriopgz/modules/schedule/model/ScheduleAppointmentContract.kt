@@ -19,5 +19,8 @@ interface ScheduleAppointmentContract {
         fun validateFormSchedule()
         fun cleanInputs()
         fun setFormatDecimalMoney(input:String):String
+        fun validateIfIsDisableButtonAddSchule(isEnable:Boolean)
+        fun validateInputAmount(string:String): Boolean
+        fun validateInputNameMedicine(string:String): Boolean
     }
 }

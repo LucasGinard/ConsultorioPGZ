@@ -21,15 +21,16 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
     var dateSelected:String ?= null
     var timeSelected:String ?= null
     var selectClient:ClientModel ?= null
-    var selectDoctor:String ?= null
+    var nameMedicine:String ?= null
+    var amountCost:String ?= null
 
     override fun addNewScheduleAppointment() {
-        SessionCache.listSchedules.add(ScheduleAppointmentModel(selectClient ,selectDoctor,dateSelected,timeSelected))
+        SessionCache.listSchedules.add(ScheduleAppointmentModel(selectClient ,nameMedicine,dateSelected,timeSelected,amountCost))
         view.goHome()
     }
 
     override fun validateFormSchedule() {
-        if (dateSelected.isNullOrEmpty() || timeSelected.isNullOrEmpty() || selectClient == null || selectDoctor.isNullOrEmpty()){
+        if (dateSelected.isNullOrEmpty() || timeSelected.isNullOrEmpty() || selectClient == null || nameMedicine.isNullOrEmpty() || amountCost.isNullOrEmpty()){
             view.isNotValidNewSchedule()
         }else{
             view.isValidNewSchedule()
@@ -40,7 +41,8 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
         dateSelected = null
         timeSelected = null
         selectClient = null
-        selectDoctor = null
+        nameMedicine = null
+        amountCost = null
         validateFormSchedule()
     }
 
@@ -54,8 +56,8 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
             val formatter = NumberFormat.getInstance(Locale.US) as DecimalFormat
             formatter.applyPattern("#,###,###,###")
             val formattedString = formatter.format(longval)
-
-            return "Gs ${formattedString.replace(",",".")}"
+            amountCost = "Gs ${formattedString.replace(",",".")}"
+            return amountCost as String
         } catch (nfe: NumberFormatException) {
             nfe.printStackTrace()
         }
@@ -114,5 +116,26 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
     private fun formatTime(date: Date): String {
         val format = SimpleDateFormat("HH:mm", Locale.getDefault())
         return format.format(date)
+    }
+
+    override fun validateIfIsDisableButtonAddSchule(isEnable:Boolean){
+        if (!isEnable) view.isNotValidNewSchedule()
+    }
+
+    override fun validateInputAmount(string: String): Boolean {
+        val isValid = validateInputNotEmptyOrBlank(string)
+        validateIfIsDisableButtonAddSchule(isValid)
+        return isValid
+    }
+
+    override fun validateInputNameMedicine(string: String): Boolean {
+        val isValid = validateInputNotEmptyOrBlank(string)
+        if (isValid) nameMedicine = string
+        validateIfIsDisableButtonAddSchule(isValid)
+        return isValid
+    }
+
+    private fun validateInputNotEmptyOrBlank(input:String):Boolean{
+        return input.isNotEmpty()
     }
 }

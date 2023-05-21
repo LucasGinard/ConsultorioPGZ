@@ -65,6 +65,8 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
             binding.editTextDate.setText("")
             binding.editTextTime.setText("")
             binding.editTextClients.setText("")
+            binding.editTextAmount.setText("")
+            binding.editTextMedicineName.setText("")
             presenter.cleanInputs()
         }
 
@@ -105,20 +107,44 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
                 binding.editTextAmount.removeTextChangedListener(this)
 
                 binding.editTextAmount.setText(presenter.setFormatDecimalMoney(s.toString()))
-
+                presenter.validateFormSchedule()
                 binding.editTextAmount.text
                     ?.let { binding.editTextAmount.setSelection(it.length) }
 
                 binding.editTextAmount.addTextChangedListener(this)
+
+                val inputText = binding.editTextAmount.text.toString().trim()
+                if (presenter.validateInputAmount(inputText)) {
+                    binding.amounttextInputLayout.error = null
+                } else {
+                    binding.amounttextInputLayout.error = "Porfavor ingrese un monto"
+                }
+            }
+        })
+
+        binding.editTextMedicineName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val inputText = binding.editTextMedicineName.text.toString().trim()
+                if (presenter.validateInputNameMedicine(inputText)) {
+                    binding.medicineNameTextInputLayout.error = null
+                } else {
+                    binding.medicineNameTextInputLayout.error = "Porfavor ingrese el nombre del medicamento"
+                }
             }
         })
     }
 
     override fun setDateSelected(date:String) {
+        presenter.validateFormSchedule()
         binding.editTextDate.setText(date)
     }
 
     override fun setTimeSelected(time: String) {
+        presenter.validateFormSchedule()
         binding.editTextTime.setText(time)
     }
 

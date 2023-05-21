@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
             if (presenter.validateIsEnableGoToAddNewSchedule()){
                 goToSchedule();
             }else{
-                Toast.makeText(this, "Porfavor Registre un Usuario para registrar un medicamento", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Porfavor registre un usuario para registrar un medicamento", Toast.LENGTH_SHORT).show();
             }
         });
 
