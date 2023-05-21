@@ -18,5 +18,6 @@ interface ScheduleAppointmentContract {
         fun addNewScheduleAppointment()
         fun validateFormSchedule()
         fun cleanInputs()
+        fun setFormatDecimalMoney(input:String):String
     }
 }

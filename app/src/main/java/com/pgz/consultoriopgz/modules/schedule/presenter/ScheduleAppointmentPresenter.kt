@@ -9,6 +9,8 @@ import com.pgz.consultoriopgz.modules.client.model.ClientModel
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentContract
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentModel
 import com.pgz.consultoriopgz.modules.utils.SessionCache
+import java.text.DecimalFormat
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -40,6 +42,24 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
         selectClient = null
         selectDoctor = null
         validateFormSchedule()
+    }
+
+    override fun setFormatDecimalMoney(input: String): String {
+        try {
+            var originalString = input.replace(".",",").replace("Gs ","")
+            if (originalString.contains(",")) {
+                originalString = originalString.replace(",".toRegex(), "")
+            }
+            val longval: Long = originalString.toLong()
+            val formatter = NumberFormat.getInstance(Locale.US) as DecimalFormat
+            formatter.applyPattern("#,###,###,###")
+            val formattedString = formatter.format(longval)
+
+            return "Gs ${formattedString.replace(",",".")}"
+        } catch (nfe: NumberFormatException) {
+            nfe.printStackTrace()
+        }
+        return  input
     }
 
     override fun showDatePicker(context: Context) {
