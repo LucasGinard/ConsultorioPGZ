@@ -2,7 +2,7 @@
     <string name="app_name">Consultorio PGZ</string>
 
     <string name="title_about">Acerca de</string>
-    <string name="title_client">Agregar Paciente</string>
+    <string name="title_client">Agregar Familiar</string>
     <string name="title_schedule">Agendar Cita</string>
     <string name="title_list">Citas Agendadas</string>
 

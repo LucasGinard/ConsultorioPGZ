@@ -145,7 +145,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:fontFamily="@font/roboto_condensed_bold"
-                        android:text="Solicitar una identificación física, como la cédula de identidad, para comprobar la identidad del cliente."
+                        android:text="Porfavor rellenar el formulario para poder habilitar el boton agregar"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageView4"
