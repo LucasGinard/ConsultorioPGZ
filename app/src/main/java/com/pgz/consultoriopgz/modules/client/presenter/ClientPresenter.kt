@@ -3,6 +3,7 @@ package com.pgz.consultoriopgz.modules.client.presenter
 import com.pgz.consultoriopgz.modules.client.model.ClientModel
 import com.pgz.consultoriopgz.modules.client.model.ClientContract
 import com.pgz.consultoriopgz.modules.utils.SessionCache
+import java.lang.Exception
 
 class ClientPresenter(var view:ClientContract.View):ClientContract.Presenter {
 
@@ -37,8 +38,9 @@ class ClientPresenter(var view:ClientContract.View):ClientContract.Presenter {
     }
 
     override fun validateId(idInput: String): Boolean {
-        idNumber = idInput.toInt()
-        isValidId = validateInputNotEmptyOrBlank(idInput)
+        idNumber = try {idInput.toInt()}catch(e:Exception){0}
+        val validateInputString = if (idNumber == 0) "" else idInput
+        isValidId = validateInputNotEmptyOrBlank(validateInputString)
         validateIfIsDisableButtonAddNewClient(isValidId)
         return isValidId
     }
