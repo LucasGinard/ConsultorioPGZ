@@ -4,20 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import com.pgz.consultoriopgz.R;
 import com.pgz.consultoriopgz.modules.about.AboutActivity;
 import com.pgz.consultoriopgz.modules.client.view.ClientActivity;
+import com.pgz.consultoriopgz.modules.home.model.ContractMain;
+import com.pgz.consultoriopgz.modules.home.presenter.MainPresenter;
 import com.pgz.consultoriopgz.modules.schedule.view.ScheduleAppointmentActivity;
 import com.pgz.consultoriopgz.modules.scheduleList.view.ScheduleListActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ContractMain.View {
 
     CardView cardClient,cardAbout,cardList,cardSchedule;
+    MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        presenter = new MainPresenter(this);
         configureUI();
         configureOnClickListeners();
     }
@@ -39,7 +45,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         cardSchedule.setOnClickListener(v -> {
-            goToSchedule();
+            if (presenter.validateIsEnableGoToAddNewSchedule()){
+                goToSchedule();
+            }else{
+                Toast.makeText(this, "Porfavor Registre un Usuario para registrar un medicamento", Toast.LENGTH_SHORT).show();
+            }
         });
 
         cardList.setOnClickListener(v -> {
