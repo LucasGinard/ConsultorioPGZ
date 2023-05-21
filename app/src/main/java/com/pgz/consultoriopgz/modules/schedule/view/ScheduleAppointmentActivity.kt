@@ -3,6 +3,7 @@ package com.pgz.consultoriopgz.modules.schedule.view
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.pgz.consultoriopgz.R
@@ -42,7 +43,7 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
         }
 
         binding.editTextDoctor.setOnClickListener {
-
+            binding.spinnerDoctors.performClick()
         }
 
         binding.editTextDate.setOnClickListener {
@@ -63,9 +64,9 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
     }
 
     private fun configureSpinners(){
-        val adapter = NameSpinnerAdapter(this, SessionCache.listClients)
-        adapter.setDropDownViewResource(R.layout.item_spinner_client)
-        binding.spinnerClients.adapter = adapter
+        val adapterClientes = NameSpinnerAdapter(this, SessionCache.listClients)
+        adapterClientes.setDropDownViewResource(R.layout.item_spinner_client)
+        binding.spinnerClients.adapter = adapterClientes
 
         binding.spinnerClients.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -81,5 +82,11 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
+
+        val listaCadenas = listOf("Hector", "Richard", "Lucas")
+        val adapterDoctors = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaCadenas)
+        adapterDoctors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerDoctors.adapter = adapterDoctors
+
     }
 }
