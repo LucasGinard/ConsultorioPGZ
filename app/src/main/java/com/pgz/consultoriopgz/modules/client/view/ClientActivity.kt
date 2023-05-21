@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.pgz.consultoriopgz.R
 import com.pgz.consultoriopgz.databinding.ActivityClientBinding
-import com.pgz.consultoriopgz.modules.client.model.ContractClient
+import com.pgz.consultoriopgz.modules.client.model.ClientContract
 import com.pgz.consultoriopgz.modules.client.presenter.ClientPresenter
 
-class ClientActivity : AppCompatActivity(), ContractClient.View {
+class ClientActivity : AppCompatActivity(), ClientContract.View {
 
     private lateinit var binding: ActivityClientBinding
     private lateinit var presenter:ClientPresenter

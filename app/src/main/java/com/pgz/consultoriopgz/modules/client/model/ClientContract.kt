@@ -1,6 +1,6 @@
 package com.pgz.consultoriopgz.modules.client.model
 
-interface ContractClient {
+interface ClientContract {
     interface View{
         fun isValidNewClient()
         fun isNotValidNewClient()

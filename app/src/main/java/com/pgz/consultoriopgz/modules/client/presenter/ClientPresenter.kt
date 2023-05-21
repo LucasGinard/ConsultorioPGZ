@@ -1,10 +1,10 @@
 package com.pgz.consultoriopgz.modules.client.presenter
 
 import com.pgz.consultoriopgz.modules.client.model.ClientModel
-import com.pgz.consultoriopgz.modules.client.model.ContractClient
+import com.pgz.consultoriopgz.modules.client.model.ClientContract
 import com.pgz.consultoriopgz.modules.utils.SessionCache
 
-class ClientPresenter(var view:ContractClient.View):ContractClient.Presenter {
+class ClientPresenter(var view:ClientContract.View):ClientContract.Presenter {
 
     var isValidName = false
     var isValidNameLastr = false

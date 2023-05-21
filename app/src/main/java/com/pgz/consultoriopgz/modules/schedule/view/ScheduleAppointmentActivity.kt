@@ -8,19 +8,23 @@ import androidx.core.content.ContextCompat
 import com.pgz.consultoriopgz.R
 import com.pgz.consultoriopgz.databinding.ActivityScheduleAppointmentBinding
 import com.pgz.consultoriopgz.modules.client.model.ClientModel
+import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentContract
+import com.pgz.consultoriopgz.modules.schedule.presenter.ScheduleAppointmentPresenter
 import com.pgz.consultoriopgz.modules.utils.SessionCache
 
-
-class ScheduleAppointmentActivity : AppCompatActivity() {
+class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentContract.View {
 
     private lateinit var binding: ActivityScheduleAppointmentBinding
+    private lateinit var presenter: ScheduleAppointmentPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityScheduleAppointmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        presenter = ScheduleAppointmentPresenter(this)
         configureUI()
         configureOnClickListeners()
+        configureSpinners()
     }
 
     private fun configureUI(){
@@ -36,7 +40,9 @@ class ScheduleAppointmentActivity : AppCompatActivity() {
         binding.editTextClients.setOnClickListener {
             binding.spinnerClients.performClick()
         }
+    }
 
+    private fun configureSpinners(){
         val adapter = NameSpinnerAdapter(this, SessionCache.listClients)
         adapter.setDropDownViewResource(R.layout.item_spinner_client)
         binding.spinnerClients.adapter = adapter
@@ -49,8 +55,8 @@ class ScheduleAppointmentActivity : AppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    var selectedCity = parent.adapter.getItem(position) as ClientModel
-
+                    val selectedClient = parent.adapter.getItem(position) as ClientModel
+                    binding.editTextClients.setText("${selectedClient.firstName} ${selectedClient.lastName}")
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
