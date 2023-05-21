@@ -20,6 +20,28 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
     var timeSelected:String ?= null
     var selectClient:ClientModel ?= null
     var selectDoctor:String ?= null
+
+    override fun addNewScheduleAppointment() {
+        SessionCache.listSchedules.add(ScheduleAppointmentModel(selectClient ,selectDoctor,dateSelected,timeSelected))
+        view.goHome()
+    }
+
+    override fun validateFormSchedule() {
+        if (dateSelected.isNullOrEmpty() || timeSelected.isNullOrEmpty() || selectClient == null || selectDoctor.isNullOrEmpty()){
+            view.isNotValidNewSchedule()
+        }else{
+            view.isValidNewSchedule()
+        }
+    }
+
+    override fun cleanInputs() {
+        dateSelected = null
+        timeSelected = null
+        selectClient = null
+        selectDoctor = null
+        validateFormSchedule()
+    }
+
     override fun showDatePicker(context: Context) {
         val calendar = Calendar.getInstance()
 
@@ -30,6 +52,7 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
                 selectedCalendar.set(year, month, day)
                 dateSelected = formatDate(selectedCalendar.time ?: Date())
                 view.setDateSelected(dateSelected ?: "")
+                validateFormSchedule()
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
@@ -57,6 +80,7 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
                 val formattedTime = formatTime(selectedTime)
                 timeSelected = formattedTime
                 view.setTimeSelected(formattedTime)
+                validateFormSchedule()
             },
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),
@@ -66,10 +90,6 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
         timePickerDialog.show()
     }
 
-    override fun addNewScheduleAppointment() {
-        SessionCache.listSchedules.add(ScheduleAppointmentModel(selectClient ,selectDoctor,dateSelected,timeSelected))
-        view.goHome()
-    }
 
     private fun formatTime(date: Date): String {
         val format = SimpleDateFormat("HH:mm", Locale.getDefault())

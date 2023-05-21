@@ -8,11 +8,15 @@ interface ScheduleAppointmentContract {
         fun setDateSelected(date:String)
         fun setTimeSelected(time:String)
         fun goHome()
+        fun isValidNewSchedule()
+        fun isNotValidNewSchedule()
     }
 
     interface Presenter{
         fun showDatePicker(context: Context)
         fun showTimePicker(context: Context)
         fun addNewScheduleAppointment()
+        fun validateFormSchedule()
+        fun cleanInputs()
     }
 }

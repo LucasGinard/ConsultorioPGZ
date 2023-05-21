@@ -58,6 +58,14 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
         binding.btnAddSchedule.setOnClickListener {
             presenter.addNewScheduleAppointment()
         }
+
+        binding.btnClean.setOnClickListener {
+            binding.editTextDate.setText("")
+            binding.editTextTime.setText("")
+            binding.editTextClients.setText("")
+            binding.editTextDoctor.setText("")
+            presenter.cleanInputs()
+        }
     }
 
     override fun setDateSelected(date:String) {
@@ -71,6 +79,16 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
     override fun goHome() {
         Toast.makeText(this,"Cita registrada exitosamente", Toast.LENGTH_LONG).show()
         finish()
+    }
+
+    override fun isValidNewSchedule() {
+        binding.btnAddSchedule.isEnabled = true
+        binding.btnClean.isEnabled = true
+    }
+
+    override fun isNotValidNewSchedule() {
+        binding.btnAddSchedule.isEnabled = false
+        binding.btnClean.isEnabled = false
     }
 
     private fun configureSpinners(){
@@ -87,6 +105,7 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
                     id: Long
                 ) {
                     presenter.selectClient = parent.adapter.getItem(position) as ClientModel
+                    presenter.validateFormSchedule()
                     binding.editTextClients.setText("${presenter.selectClient?.firstName} ${presenter.selectClient?.lastName}")
                 }
 
@@ -100,6 +119,7 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
         binding.spinnerDoctors.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 presenter.selectDoctor = SessionCache.listDoctors[position]
+                presenter.validateFormSchedule()
                 binding.editTextDoctor.setText(presenter.selectDoctor)
             }
 

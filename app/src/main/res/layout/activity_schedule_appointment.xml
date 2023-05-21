@@ -166,7 +166,7 @@
 
 
         <Button
-            android:id="@+id/btnLimpiar"
+            android:id="@+id/btnClean"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
