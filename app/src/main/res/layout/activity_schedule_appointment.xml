@@ -28,6 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/header">
 
         <LinearLayout
+            android:id="@+id/sectionClient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -64,6 +65,7 @@
             android:spinnerMode="dialog" />
 
         <LinearLayout
+            android:id="@+id/sectionDoctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -94,6 +96,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/sectionDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -124,6 +127,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/sectionTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

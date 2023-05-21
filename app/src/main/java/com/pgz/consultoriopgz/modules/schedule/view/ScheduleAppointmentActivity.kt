@@ -40,6 +40,22 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
         binding.editTextClients.setOnClickListener {
             binding.spinnerClients.performClick()
         }
+
+        binding.editTextDoctor.setOnClickListener {
+
+        }
+
+        binding.editTextDate.setOnClickListener {
+            presenter.showDatePicker(this)
+        }
+
+        binding.editTextTime.setOnClickListener {
+
+        }
+    }
+
+    override fun setDateSelected(date:String) {
+        binding.editTextDate.setText(date)
     }
 
     private fun configureSpinners(){
