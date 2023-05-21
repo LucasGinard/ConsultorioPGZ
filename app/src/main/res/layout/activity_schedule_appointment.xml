@@ -225,85 +225,112 @@
                     app:layout_constraintStart_toStartOf="@+id/textView10"
                     app:layout_constraintTop_toBottomOf="@+id/textView10">
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/lnMonday"
+                        android:layout_width="48dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:padding="8dp"
+                        android:layout_marginEnd="4dp"
                         android:background="@drawable/background_line_blue">
 
                         <TextView
+                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lu" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/lnTuesday"
+                        android:layout_width="48dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:padding="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/background_line_gray">
 
                         <TextView
+                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Mar" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/lnWednesday"
+                        android:layout_width="48dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:padding="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/background_line_gray">
 
                         <TextView
+                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Mier" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/lnThursday"
+                        android:layout_width="48dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:padding="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/background_line_gray">
 
                         <TextView
+                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Juev" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/lnFriday"
+                        android:layout_width="48dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:padding="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/background_line_gray">
 
                         <TextView
+                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Vie" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/lnSaturday"
+                        android:layout_width="48dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:padding="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/background_line_gray">
 
                         <TextView
+                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Sab" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/lnSunday"
+                        android:layout_width="48dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="8dp">
+                        android:padding="8dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/background_line_gray">
 
                         <TextView
+                            android:layout_gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Dom" />
