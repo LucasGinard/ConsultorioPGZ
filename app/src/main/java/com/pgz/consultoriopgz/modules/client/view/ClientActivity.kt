@@ -149,7 +149,7 @@ class ClientActivity : AppCompatActivity(), ClientContract.View {
     }
 
     override fun goHome() {
-        Toast.makeText(this,"Paciente agregado",Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"Usuario agregado",Toast.LENGTH_LONG).show()
         finish()
     }
 }
