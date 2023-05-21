@@ -2,15 +2,13 @@ package com.pgz.consultoriopgz.modules.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-
 import com.pgz.consultoriopgz.R;
 import com.pgz.consultoriopgz.modules.about.AboutActivity;
 import com.pgz.consultoriopgz.modules.client.view.ClientActivity;
 import com.pgz.consultoriopgz.modules.schedule.view.ScheduleAppointmentActivity;
+import com.pgz.consultoriopgz.modules.scheduleList.view.ScheduleListActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
             goToSchedule();
         });
 
+        cardList.setOnClickListener(v -> {
+            gotToListSchedule();
+        });
 
     }
 
@@ -61,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ScheduleAppointmentActivity.class);
         startActivity(intent);
     }
-
-
+    private void gotToListSchedule(){
+        Intent intent = new Intent(this, ScheduleListActivity.class);
+        startActivity(intent);
+    }
 
 }
