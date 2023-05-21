@@ -50,12 +50,16 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
         }
 
         binding.editTextTime.setOnClickListener {
-
+            presenter.showTimePicker(this)
         }
     }
 
     override fun setDateSelected(date:String) {
         binding.editTextDate.setText(date)
+    }
+
+    override fun setTimeSelected(time: String) {
+        binding.editTextTime.setText(time)
     }
 
     private fun configureSpinners(){

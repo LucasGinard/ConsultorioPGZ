@@ -1,8 +1,10 @@
 package com.pgz.consultoriopgz.modules.schedule.presenter
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.widget.DatePicker
+import android.widget.TimePicker
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentContract
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -35,6 +37,31 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
 
     private fun formatDate(date: Date): String {
         val format = SimpleDateFormat("dd MMMM yyyy", Locale("es", "ES"))
+        return format.format(date)
+    }
+
+    override fun showTimePicker(context: Context) {
+        val calendar = Calendar.getInstance()
+
+        val timePickerDialog = TimePickerDialog(
+            context,
+            { _: TimePicker, hourOfDay: Int, minute: Int ->
+                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                calendar.set(Calendar.MINUTE, minute)
+                val selectedTime = calendar.time
+                val formattedTime = formatTime(selectedTime)
+                view.setTimeSelected(formattedTime)
+            },
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            true
+        )
+
+        timePickerDialog.show()
+    }
+
+    private fun formatTime(date: Date): String {
+        val format = SimpleDateFormat("HH:mm", Locale.getDefault())
         return format.format(date)
     }
 }

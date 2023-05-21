@@ -6,9 +6,11 @@ import java.util.Date
 interface ScheduleAppointmentContract {
     interface View{
         fun setDateSelected(date:String)
+        fun setTimeSelected(time:String)
     }
 
     interface Presenter{
         fun showDatePicker(context: Context)
+        fun showTimePicker(context: Context)
     }
 }
