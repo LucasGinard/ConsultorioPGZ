@@ -37,6 +37,8 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
     private fun configureUI(){
         binding.header.tvTitleHeader.text = getText(R.string.title_schedule)
         binding.header.icLogo.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_schedule))
+        val blueDrawable = ContextCompat.getDrawable(this, R.drawable.background_line_blue)
+        binding.lnMonday.background = blueDrawable
     }
 
     private fun configureOnClickListeners(){
@@ -71,31 +73,31 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
         }
 
         binding.lnMonday.setOnClickListener {
-            changeColorSectionSelectDay(it)
+            changeColorSectionSelectDay(it,0)
         }
 
         binding.lnTuesday.setOnClickListener {
-            changeColorSectionSelectDay(it)
+            changeColorSectionSelectDay(it,1)
         }
 
         binding.lnWednesday.setOnClickListener {
-            changeColorSectionSelectDay(it)
+            changeColorSectionSelectDay(it,2)
         }
 
         binding.lnThursday.setOnClickListener {
-            changeColorSectionSelectDay(it)
+            changeColorSectionSelectDay(it,3)
         }
 
         binding.lnFriday.setOnClickListener {
-            changeColorSectionSelectDay(it)
+            changeColorSectionSelectDay(it,4)
         }
 
         binding.lnSaturday.setOnClickListener {
-            changeColorSectionSelectDay(it)
+            changeColorSectionSelectDay(it,5)
         }
 
         binding.lnSunday.setOnClickListener {
-            changeColorSectionSelectDay(it)
+            changeColorSectionSelectDay(it,6)
         }
 
         binding.editTextAmount.addTextChangedListener(object : TextWatcher {
@@ -163,14 +165,28 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
         binding.btnClean.isEnabled = false
     }
 
-    private fun changeColorSectionSelectDay(view:View){
+    private fun changeColorSectionSelectDay(view:View,dayClicked:Int){
         val blueDrawable = ContextCompat.getDrawable(this, R.drawable.background_line_blue)
         val grayDrawable = ContextCompat.getDrawable(this, R.drawable.background_line_gray)
 
         if (view.background?.constantState == blueDrawable?.constantState) {
+            setCheckorNotClicked(dayClicked,false)
             view.background = grayDrawable
         }else{
+            setCheckorNotClicked(dayClicked,true)
             view.background = blueDrawable
+        }
+    }
+
+    private fun setCheckorNotClicked(dayClicked: Int,isCheck:Boolean){
+        when(dayClicked){
+            0 -> presenter.daysSelected.monday = isCheck
+            1 -> presenter.daysSelected.tuesday = isCheck
+            2 -> presenter.daysSelected.wednesday = isCheck
+            3 -> presenter.daysSelected.thursday = isCheck
+            4 -> presenter.daysSelected.friday = isCheck
+            5 -> presenter.daysSelected.saturday = isCheck
+            6 -> presenter.daysSelected.sunday = isCheck
         }
     }
 

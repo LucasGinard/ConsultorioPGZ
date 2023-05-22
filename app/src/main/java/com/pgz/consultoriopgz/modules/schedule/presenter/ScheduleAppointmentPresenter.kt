@@ -6,6 +6,7 @@ import android.content.Context
 import android.widget.DatePicker
 import android.widget.TimePicker
 import com.pgz.consultoriopgz.modules.client.model.ClientModel
+import com.pgz.consultoriopgz.modules.schedule.model.DaysSelectedModel
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentContract
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentModel
 import com.pgz.consultoriopgz.modules.utils.SessionCache
@@ -23,9 +24,10 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
     var selectClient:ClientModel ?= null
     var nameMedicine:String ?= null
     var amountCost:String ?= null
+    var daysSelected: DaysSelectedModel = DaysSelectedModel()
 
     override fun addNewScheduleAppointment() {
-        SessionCache.listSchedules.add(ScheduleAppointmentModel(selectClient ,nameMedicine,dateSelected,timeSelected,amountCost))
+        SessionCache.listSchedules.add(ScheduleAppointmentModel(selectClient ,nameMedicine,dateSelected,timeSelected,amountCost,daysSelected))
         view.goHome()
     }
 

@@ -7,5 +7,6 @@ data class ScheduleAppointmentModel(
     var nameMedicine:String?,
     var date: String?,
     var time:String?,
-    var amountCost:String?
+    var amountCost:String?,
+    var daysSelected:DaysSelectedModel?
 )
