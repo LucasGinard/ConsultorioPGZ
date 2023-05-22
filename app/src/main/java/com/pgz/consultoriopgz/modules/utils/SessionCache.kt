@@ -7,6 +7,5 @@ class SessionCache {
     companion object{
         var listClients:ArrayList<ClientModel> = ArrayList()
         var listSchedules:ArrayList<ScheduleAppointmentModel> = ArrayList()
-        val listDoctors = listOf("Hector", "Richard", "Lucas")
     }
 }

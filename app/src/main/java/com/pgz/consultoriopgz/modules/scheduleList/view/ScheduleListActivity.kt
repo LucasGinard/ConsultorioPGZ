@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.pgz.consultoriopgz.R
 import com.pgz.consultoriopgz.databinding.ActivityListScheduleBinding
 import com.pgz.consultoriopgz.modules.schedule.view.ScheduleAppointmentActivity
 import com.pgz.consultoriopgz.modules.scheduleList.model.ScheduleListContract
 import com.pgz.consultoriopgz.modules.scheduleList.presenter.ScheduleListPresenter
+import com.pgz.consultoriopgz.modules.utils.SessionCache
 
 class ScheduleListActivity: AppCompatActivity(), ScheduleListContract.View {
 
@@ -23,6 +25,7 @@ class ScheduleListActivity: AppCompatActivity(), ScheduleListContract.View {
         setContentView(binding.root)
         configureUI()
         configureOnClickListeners()
+        configureListSchedules()
     }
 
     private fun configureUI(){
@@ -39,6 +42,12 @@ class ScheduleListActivity: AppCompatActivity(), ScheduleListContract.View {
         binding.btnAddSchedule.setOnClickListener {
             startActivity(Intent(this,ScheduleAppointmentActivity::class.java))
         }
+    }
+
+    private fun configureListSchedules(){
+        val adapter = ScheduleListAdapter(SessionCache.listSchedules,this)
+        binding.rvSchedules.layoutManager = LinearLayoutManager(this)
+        binding.rvSchedules.adapter = adapter
     }
 
     override fun showEmptyBanner() {
