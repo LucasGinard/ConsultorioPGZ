@@ -53,7 +53,11 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
         });
 
         cardList.setOnClickListener(v -> {
-            gotToListSchedule();
+            if (presenter.validateIsEnableGoToAddNewSchedule()){
+                gotToListSchedule();
+            }else{
+                Toast.makeText(this, "Porfavor registre un usuario para poder ingresar", Toast.LENGTH_SHORT).show();
+            }
         });
 
     }
