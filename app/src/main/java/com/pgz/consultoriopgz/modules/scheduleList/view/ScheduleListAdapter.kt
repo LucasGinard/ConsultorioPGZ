@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.pgz.consultoriopgz.R
@@ -41,6 +41,7 @@ class ScheduleListAdapter(private val scheduleAppointmentList: ArrayList<Schedul
         private val chipFriday: Chip = itemView.findViewById(R.id.chipFriday)
         private val chipSaturday: Chip = itemView.findViewById(R.id.chipSaturday)
         private val chipSunday: Chip = itemView.findViewById(R.id.chipSunday)
+        private val isCheckCard: CheckBox = itemView.findViewById(R.id.checkDone)
 
         fun bind(scheduleAppointment: ScheduleAppointmentModel) {
             clientNameTextView.text = "${scheduleAppointment.client?.firstName} ${scheduleAppointment.client?.lastName}"
