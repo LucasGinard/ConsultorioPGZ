@@ -13,7 +13,7 @@
         android:theme="@style/Theme.ConsultorioPGZ"
         tools:targetApi="31">
         <activity
-            android:name=".modules.home.MainActivity"
+            android:name=".modules.modules.home.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,10 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".modules.about.AboutActivity"/>
-        <activity android:name=".modules.client.view.ClientActivity"/>
-        <activity android:name=".modules.schedule.view.ScheduleAppointmentActivity"/>
-        <activity android:name=".modules.scheduleList.view.ScheduleListActivity"/>
+        <activity android:name=".modules.modules.about.AboutActivity"/>
+        <activity android:name=".modules.modules.client.view.ClientActivity"/>
+        <activity android:name=".modules.modules.schedule.view.ScheduleAppointmentActivity"/>
+        <activity android:name=".modules.modules.scheduleList.view.ScheduleListActivity"/>
     </application>
 
 </manifest>
