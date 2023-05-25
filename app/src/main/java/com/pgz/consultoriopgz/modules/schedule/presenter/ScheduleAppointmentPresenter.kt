@@ -49,6 +49,8 @@ class ScheduleAppointmentPresenter(var view:ScheduleAppointmentContract.View): S
     }
 
     override fun setFormatDecimalMoney(input: String): String {
+        if(input == "Gs ") return ""
+
         try {
             var originalString = input.replace(".",",").replace("Gs ","")
             if (originalString.contains(",")) {
