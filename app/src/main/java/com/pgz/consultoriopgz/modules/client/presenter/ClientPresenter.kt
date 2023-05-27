@@ -1,8 +1,13 @@
 package com.pgz.consultoriopgz.modules.client.presenter
 
-import com.pgz.consultoriopgz.modules.client.model.ClientModel
+import com.pgz.consultoriopgz.data.entitys.ClientEntity
 import com.pgz.consultoriopgz.modules.client.model.ClientContract
+import com.pgz.consultoriopgz.modules.client.repository.ClientRepository
 import com.pgz.consultoriopgz.utils.SessionCache
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 class ClientPresenter(var view: ClientContract.View): ClientContract.Presenter {
@@ -17,10 +22,23 @@ class ClientPresenter(var view: ClientContract.View): ClientContract.Presenter {
     var cellphone:String = ""
     var idNumber:Int = 0
 
+    var repository:ClientRepository = ClientRepository()
+
     override fun addClient() {
-        val newClient = ClientModel(name,lastName,idNumber,cellphone)
-        SessionCache.listClients.add(newClient)
-        view.goHome()
+        val newClient = ClientEntity(name,lastName,idNumber,cellphone)
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                addClientIntoDataBase(newClient)
+                SessionCache.listClients.add(newClient)
+                view.goHome()
+            } catch (e: Exception) {
+                view.showError()
+            }
+        }
+    }
+
+    override suspend fun addClientIntoDataBase(client: ClientEntity) = withContext(Dispatchers.IO) {
+        repository.insertClient(client)
     }
 
     override fun validateName(nameInput: String): Boolean {

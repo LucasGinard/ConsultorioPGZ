@@ -152,4 +152,8 @@ class ClientActivity : AppCompatActivity(), ClientContract.View {
         Toast.makeText(this,"Usuario agregado",Toast.LENGTH_LONG).show()
         finish()
     }
+
+    override fun showError() {
+        Toast.makeText(this,"No se a guardado vuelva a intentarlo",Toast.LENGTH_LONG).show()
+    }
 }

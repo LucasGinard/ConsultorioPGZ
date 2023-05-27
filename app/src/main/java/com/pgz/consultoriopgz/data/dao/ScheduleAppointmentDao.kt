@@ -11,7 +11,7 @@ import com.pgz.consultoriopgz.data.entitys.ScheduleAppointmentEntity
 interface ScheduleAppointmentDao {
 
     @Query("SELECT * FROM appointments")
-    suspend fun getAllAppointments(): ArrayList<ScheduleAppointmentEntity>
+    suspend fun getAllAppointments(): List<ScheduleAppointmentEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAppointment(appointment: ScheduleAppointmentEntity)

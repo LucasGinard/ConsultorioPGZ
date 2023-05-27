@@ -5,7 +5,7 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.widget.DatePicker
 import android.widget.TimePicker
-import com.pgz.consultoriopgz.modules.client.model.ClientModel
+import com.pgz.consultoriopgz.data.entitys.ClientEntity
 import com.pgz.consultoriopgz.modules.schedule.model.DaysSelectedModel
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentContract
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentModel
@@ -21,7 +21,7 @@ class ScheduleAppointmentPresenter(var view: ScheduleAppointmentContract.View): 
 
     var dateSelected:String ?= null
     var timeSelected:String ?= null
-    var selectClient: ClientModel?= null
+    var selectClient: ClientEntity?= null
     var nameMedicine:String ?= null
     var amountCost:String ?= null
     var daysSelected: DaysSelectedModel = DaysSelectedModel()

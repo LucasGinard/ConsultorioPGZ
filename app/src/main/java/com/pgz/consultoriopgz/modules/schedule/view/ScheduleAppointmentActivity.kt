@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.pgz.consultoriopgz.R
+import com.pgz.consultoriopgz.data.entitys.ClientEntity
 import com.pgz.consultoriopgz.databinding.ActivityScheduleAppointmentBinding
-import com.pgz.consultoriopgz.modules.client.model.ClientModel
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentContract
 import com.pgz.consultoriopgz.modules.schedule.presenter.ScheduleAppointmentPresenter
 import com.pgz.consultoriopgz.utils.SessionCache
@@ -199,7 +199,7 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
                     position: Int,
                     id: Long
                 ) {
-                    presenter.selectClient = parent.adapter.getItem(position) as ClientModel
+                    presenter.selectClient = parent.adapter.getItem(position) as ClientEntity
                     presenter.validateFormSchedule()
                     binding.editTextClients.setText("${presenter.selectClient?.firstName} ${presenter.selectClient?.lastName}")
                 }

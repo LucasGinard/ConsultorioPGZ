@@ -11,7 +11,7 @@ import com.pgz.consultoriopgz.data.entitys.ClientEntity
 interface ClientDao {
 
     @Query("SELECT * FROM clients")
-    suspend fun getAllClients(): ArrayList<ClientEntity>
+    suspend fun getAllClients(): List<ClientEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertClient(client: ClientEntity)
