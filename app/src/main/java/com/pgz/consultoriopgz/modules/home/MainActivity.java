@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
         presenter = new MainPresenter(this);
         configureUI();
         configureOnClickListeners();
+        getDataSave();
     }
 
     private void configureUI(){
@@ -60,6 +61,10 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
             }
         });
 
+    }
+
+    private void getDataSave(){
+        presenter.getClientsSave();
     }
 
     private void goToAbout(){
