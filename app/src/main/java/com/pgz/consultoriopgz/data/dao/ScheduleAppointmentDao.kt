@@ -9,6 +9,7 @@ import com.pgz.consultoriopgz.data.entitys.ScheduleAppointmentEntity
 
 @Dao
 interface ScheduleAppointmentDao {
+
     @Query("SELECT * FROM appointments")
     suspend fun getAllAppointments(): ArrayList<ScheduleAppointmentEntity>
 
