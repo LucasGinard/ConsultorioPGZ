@@ -1,11 +1,11 @@
 package com.pgz.consultoriopgz.data.entitys
 
 data class DaysSelectedEntity(
-    val monday: Boolean = true,
-    val tuesday: Boolean = false,
-    val wednesday: Boolean = false,
-    val thursday: Boolean = false,
-    val friday: Boolean = false,
-    val saturday: Boolean = false,
-    val sunday: Boolean = false
+    var monday: Boolean = true,
+    var tuesday: Boolean = false,
+    var wednesday: Boolean = false,
+    var thursday: Boolean = false,
+    var friday: Boolean = false,
+    var saturday: Boolean = false,
+    var sunday: Boolean = false
 )

@@ -6,9 +6,9 @@ import android.content.Context
 import android.widget.DatePicker
 import android.widget.TimePicker
 import com.pgz.consultoriopgz.data.entitys.ClientEntity
-import com.pgz.consultoriopgz.modules.schedule.model.DaysSelectedModel
+import com.pgz.consultoriopgz.data.entitys.DaysSelectedEntity
+import com.pgz.consultoriopgz.data.entitys.ScheduleAppointmentEntity
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentContract
-import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentModel
 import com.pgz.consultoriopgz.utils.SessionCache
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -24,10 +24,10 @@ class ScheduleAppointmentPresenter(var view: ScheduleAppointmentContract.View): 
     var selectClient: ClientEntity?= null
     var nameMedicine:String ?= null
     var amountCost:String ?= null
-    var daysSelected: DaysSelectedModel = DaysSelectedModel()
+    var daysSelected: DaysSelectedEntity = DaysSelectedEntity()
 
     override fun addNewScheduleAppointment() {
-        SessionCache.listSchedules.add(ScheduleAppointmentModel(selectClient ,nameMedicine,dateSelected,timeSelected,amountCost,daysSelected))
+        SessionCache.listSchedules.add(ScheduleAppointmentEntity(selectClient ,nameMedicine,dateSelected,timeSelected,amountCost,daysSelected))
         view.goHome()
     }
 

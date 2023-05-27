@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.pgz.consultoriopgz.R
-import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentModel
+import com.pgz.consultoriopgz.data.entitys.ScheduleAppointmentEntity
 
-class ScheduleListAdapter(private val scheduleAppointmentList: ArrayList<ScheduleAppointmentModel>, var context:Context) :
+class ScheduleListAdapter(private val scheduleAppointmentList: ArrayList<ScheduleAppointmentEntity>, var context:Context) :
     RecyclerView.Adapter<ScheduleListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -43,7 +43,7 @@ class ScheduleListAdapter(private val scheduleAppointmentList: ArrayList<Schedul
         private val chipSunday: Chip = itemView.findViewById(R.id.chipSunday)
         private val isCheckCard: CheckBox = itemView.findViewById(R.id.checkDone)
 
-        fun bind(scheduleAppointment: ScheduleAppointmentModel) {
+        fun bind(scheduleAppointment: ScheduleAppointmentEntity) {
             clientNameTextView.text = "${scheduleAppointment.client?.firstName} ${scheduleAppointment.client?.lastName}"
             medicineNameTextView.text = scheduleAppointment.nameMedicine
             dateTextView.text = scheduleAppointment.date
