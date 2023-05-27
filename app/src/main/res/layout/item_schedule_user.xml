@@ -123,97 +123,86 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipsPrograms"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:chipSpacing="0dp"
-                app:chipSpacingHorizontal="3dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:singleSelection="false">
+                app:layout_constraintTop_toTopOf="parent">
 
-                <com.google.android.material.chip.Chip
+                <TextView
                     android:id="@+id/chipMonday"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/background_circle_blue"
                     android:gravity="center"
+                    android:layout_marginEnd="8dp"
                     android:text="L"
-                    android:textAppearance="?android:attr/textAppearance"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="@color/blue" />
+                    android:textColor="@color/white" />
 
-                <com.google.android.material.chip.Chip
+                <TextView
                     android:id="@+id/chipTuesday"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/background_circle_gray"
                     android:gravity="center"
                     android:text="M"
-                    android:textAppearance="?android:attr/textAppearance"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="@color/gray" />
+                    android:textColor="@color/white" />
 
-                <com.google.android.material.chip.Chip
+                <TextView
                     android:id="@+id/chipWednesday"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/background_circle_gray"
                     android:gravity="center"
                     android:text="M"
-                    android:textAppearance="?android:attr/textAppearance"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="@color/gray" />
+                    android:textColor="@color/white" />
 
-                <com.google.android.material.chip.Chip
+                <TextView
                     android:id="@+id/chipThursday"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/background_circle_gray"
                     android:gravity="center"
                     android:text="J"
-                    android:textAppearance="?android:attr/textAppearance"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="@color/gray" />
+                    android:textColor="@color/white" />
 
-                <com.google.android.material.chip.Chip
+                <TextView
                     android:id="@+id/chipFriday"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/background_circle_gray"
                     android:gravity="center"
                     android:text="V"
-                    android:textAppearance="?android:attr/textAppearance"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="@color/gray" />
+                    android:textColor="@color/white" />
 
-                <com.google.android.material.chip.Chip
+                <TextView
                     android:id="@+id/chipSaturday"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/background_circle_gray"
                     android:gravity="center"
                     android:text="S"
-                    android:textAppearance="?android:attr/textAppearance"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="@color/gray" />
+                    android:textColor="@color/white" />
 
-                <com.google.android.material.chip.Chip
+                <TextView
                     android:id="@+id/chipSunday"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/background_circle_gray"
                     android:gravity="center"
                     android:text="D"
-                    android:textAppearance="?android:attr/textAppearance"
-                    android:textColor="@color/white"
-                    app:chipBackgroundColor="@color/gray"
-                    app:chipIconSize="18dp" />
+                    android:textColor="@color/white" />
+            </LinearLayout>
 
-            </com.google.android.material.chip.ChipGroup>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -223,6 +212,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.chip.Chip
 import com.pgz.consultoriopgz.R
 import com.pgz.consultoriopgz.data.entitys.ScheduleAppointmentEntity
 
@@ -34,13 +33,13 @@ class ScheduleListAdapter(private val scheduleAppointmentList: ArrayList<Schedul
         private val dateTextView: TextView = itemView.findViewById(R.id.tvDate)
         private val timeTextView: TextView = itemView.findViewById(R.id.tvTime)
         private val costTextView: TextView = itemView.findViewById(R.id.tvAmount)
-        private val chipMonday: Chip = itemView.findViewById(R.id.chipMonday)
-        private val chipTuesday: Chip = itemView.findViewById(R.id.chipTuesday)
-        private val chipWednesday: Chip = itemView.findViewById(R.id.chipWednesday)
-        private val chipThursday: Chip = itemView.findViewById(R.id.chipThursday)
-        private val chipFriday: Chip = itemView.findViewById(R.id.chipFriday)
-        private val chipSaturday: Chip = itemView.findViewById(R.id.chipSaturday)
-        private val chipSunday: Chip = itemView.findViewById(R.id.chipSunday)
+        private val chipMonday: TextView = itemView.findViewById(R.id.chipMonday)
+        private val chipTuesday: TextView = itemView.findViewById(R.id.chipTuesday)
+        private val chipWednesday: TextView = itemView.findViewById(R.id.chipWednesday)
+        private val chipThursday: TextView = itemView.findViewById(R.id.chipThursday)
+        private val chipFriday: TextView = itemView.findViewById(R.id.chipFriday)
+        private val chipSaturday: TextView = itemView.findViewById(R.id.chipSaturday)
+        private val chipSunday: TextView = itemView.findViewById(R.id.chipSunday)
         private val isCheckCard: CheckBox = itemView.findViewById(R.id.checkDone)
 
         fun bind(scheduleAppointment: ScheduleAppointmentEntity) {
@@ -58,11 +57,12 @@ class ScheduleListAdapter(private val scheduleAppointmentList: ArrayList<Schedul
             scheduleAppointment.daysSelected?.sunday?.let { tintChipIfCheck(chipSunday, it) }
         }
 
-        private fun tintChipIfCheck(chip:Chip,isCheck:Boolean){
+        private fun tintChipIfCheck(chip:TextView,isCheck:Boolean){
             if (isCheck){
-                chip.setChipBackgroundColorResource(R.color.blue)
+                chip.setBackgroundResource(R.drawable.background_circle_blue)
             }else{
-                chip.setChipBackgroundColorResource(R.color.gray)
+                chip.setBackgroundResource(R.drawable.background_circle_gray)
+
             }
         }
     }
