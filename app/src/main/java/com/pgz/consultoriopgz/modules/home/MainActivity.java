@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
 
     private void getDataSave(){
         presenter.getClientsSave();
+        presenter.getSchedulesSave();
     }
 
     private void goToAbout(){

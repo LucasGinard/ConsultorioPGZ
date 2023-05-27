@@ -20,4 +20,10 @@ class MainPresenter(var view: ContractMain.View): ContractMain.Presenter {
         }
     }
 
+    override fun getSchedulesSave() {
+        GlobalScope.launch(Dispatchers.IO) {
+            SessionCache.listSchedules = repository.getSchedules()
+        }
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.pgz.consultoriopgz.modules.schedule.model
 
 import android.content.Context
+import com.pgz.consultoriopgz.data.entitys.ClientEntity
+import com.pgz.consultoriopgz.data.entitys.ScheduleAppointmentEntity
 import java.util.Date
 
 interface ScheduleAppointmentContract {
@@ -10,6 +12,7 @@ interface ScheduleAppointmentContract {
         fun goHome()
         fun isValidNewSchedule()
         fun isNotValidNewSchedule()
+        fun showError()
     }
 
     interface Presenter{
@@ -22,5 +25,6 @@ interface ScheduleAppointmentContract {
         fun validateIfIsDisableButtonAddSchule(isEnable:Boolean)
         fun validateInputAmount(string:String): Boolean
         fun validateInputNameMedicine(string:String): Boolean
+        suspend fun addScheduleIntoDataBase(schudeleSave: ScheduleAppointmentEntity)
     }
 }

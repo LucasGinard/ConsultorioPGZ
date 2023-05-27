@@ -30,9 +30,13 @@ class ClientPresenter(var view: ClientContract.View): ClientContract.Presenter {
             try {
                 addClientIntoDataBase(newClient)
                 SessionCache.listClients.add(newClient)
-                view.goHome()
+                launch(Dispatchers.Main) {
+                    view.goHome()
+                }
             } catch (e: Exception) {
-                view.showError()
+                launch(Dispatchers.Main) {
+                    view.showError()
+                }
             }
         }
     }

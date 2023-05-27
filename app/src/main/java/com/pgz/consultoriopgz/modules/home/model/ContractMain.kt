@@ -8,5 +8,6 @@ interface ContractMain {
     interface Presenter{
         fun validateIsEnableGoToAddNewSchedule():Boolean
         fun getClientsSave()
+        fun getSchedulesSave()
     }
 }

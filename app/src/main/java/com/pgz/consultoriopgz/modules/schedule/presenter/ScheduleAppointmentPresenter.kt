@@ -5,11 +5,18 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.widget.DatePicker
 import android.widget.TimePicker
+import com.pgz.consultoriopgz.ConsultorioPGZAPP
 import com.pgz.consultoriopgz.data.entitys.ClientEntity
 import com.pgz.consultoriopgz.data.entitys.DaysSelectedEntity
 import com.pgz.consultoriopgz.data.entitys.ScheduleAppointmentEntity
 import com.pgz.consultoriopgz.modules.schedule.model.ScheduleAppointmentContract
+import com.pgz.consultoriopgz.modules.schedule.repository.ScheduleAppointmentRepository
 import com.pgz.consultoriopgz.utils.SessionCache
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -26,9 +33,28 @@ class ScheduleAppointmentPresenter(var view: ScheduleAppointmentContract.View): 
     var amountCost:String ?= null
     var daysSelected: DaysSelectedEntity = DaysSelectedEntity()
 
+    var repository = ScheduleAppointmentRepository()
+
     override fun addNewScheduleAppointment() {
-        SessionCache.listSchedules.add(ScheduleAppointmentEntity(selectClient ,nameMedicine,dateSelected,timeSelected,amountCost,daysSelected))
-        view.goHome()
+        val newSchule = ScheduleAppointmentEntity(selectClient ,nameMedicine,dateSelected,timeSelected,amountCost,daysSelected)
+        GlobalScope.launch(Dispatchers.IO) {
+            try {
+                addScheduleIntoDataBase(newSchule)
+                SessionCache.listSchedules.add(newSchule)
+                launch(Dispatchers.Main) {
+                    view.goHome()
+                }
+            } catch (e: Exception) {
+                launch(Dispatchers.Main) {
+                    view.showError()
+                }
+            }
+        }
+    }
+
+    override suspend fun addScheduleIntoDataBase(schudeleSave: ScheduleAppointmentEntity) = withContext(
+        Dispatchers.IO){
+        repository.insertSchedule(schudeleSave)
     }
 
     override fun validateFormSchedule() {

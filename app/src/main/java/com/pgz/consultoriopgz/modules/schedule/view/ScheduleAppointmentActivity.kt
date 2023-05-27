@@ -207,4 +207,8 @@ class ScheduleAppointmentActivity : AppCompatActivity(), ScheduleAppointmentCont
                 override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
     }
+
+    override fun showError() {
+        Toast.makeText(this,"No se a guardado vuelva a intentarlo",Toast.LENGTH_LONG).show()
+    }
 }
