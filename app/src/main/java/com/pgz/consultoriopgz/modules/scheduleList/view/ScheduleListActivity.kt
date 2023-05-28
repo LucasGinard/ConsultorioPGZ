@@ -3,6 +3,7 @@ package com.pgz.consultoriopgz.modules.scheduleList.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,7 @@ class ScheduleListActivity: AppCompatActivity(), ScheduleListContract.View {
 
     private lateinit var binding: ActivityListScheduleBinding
     private lateinit var presenter: ScheduleListPresenter
+    private lateinit var adapter:ScheduleListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +46,12 @@ class ScheduleListActivity: AppCompatActivity(), ScheduleListContract.View {
         }
 
         binding.btnDelete.setOnClickListener {
-
+            presenter.removeScheduleCheck(SessionCache.listCheckToDelete)
         }
     }
 
     private fun configureListSchedules(){
-        val adapter = ScheduleListAdapter(SessionCache.listSchedules,this)
+         adapter = ScheduleListAdapter(SessionCache.listSchedules,this)
         binding.rvSchedules.layoutManager = LinearLayoutManager(this)
         binding.rvSchedules.adapter = adapter
     }
@@ -65,11 +67,19 @@ class ScheduleListActivity: AppCompatActivity(), ScheduleListContract.View {
     }
 
     override fun validateButtonTrashVisibility() {
-        if (SessionCache.ListCheckToDelete.isEmpty()){
+        if (SessionCache.listCheckToDelete.isEmpty()){
             binding.btnDelete.visibility = View.GONE
         }else{
             binding.btnDelete.visibility = View.VISIBLE
         }
+    }
+
+    override fun updateList() {
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun showError() {
+        Toast.makeText(this,"Ocurrio un error vuelva a intentarlo",Toast.LENGTH_LONG).show()
     }
 
 }

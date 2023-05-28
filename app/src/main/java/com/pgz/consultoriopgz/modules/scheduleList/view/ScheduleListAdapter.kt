@@ -59,9 +59,9 @@ class ScheduleListAdapter(private val scheduleAppointmentList: ArrayList<Schedul
 
             isCheckCard.setOnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked){
-                    SessionCache.ListCheckToDelete.add(scheduleAppointment)
+                    SessionCache.listCheckToDelete.add(scheduleAppointment)
                 }else{
-                    SessionCache.ListCheckToDelete.remove(scheduleAppointment)
+                    SessionCache.listCheckToDelete.remove(scheduleAppointment)
                 }
                 view.validateButtonTrashVisibility()
             }
