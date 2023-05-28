@@ -1,6 +1,5 @@
 package com.pgz.consultoriopgz.modules.scheduleList.view
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.pgz.consultoriopgz.R
 import com.pgz.consultoriopgz.data.entitys.ScheduleAppointmentEntity
+import com.pgz.consultoriopgz.modules.scheduleList.model.ScheduleListContract
+import com.pgz.consultoriopgz.utils.SessionCache
 
-class ScheduleListAdapter(private val scheduleAppointmentList: ArrayList<ScheduleAppointmentEntity>, var context:Context) :
+class ScheduleListAdapter(private val scheduleAppointmentList: ArrayList<ScheduleAppointmentEntity>,var view:ScheduleListContract.View) :
     RecyclerView.Adapter<ScheduleListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -55,6 +56,15 @@ class ScheduleListAdapter(private val scheduleAppointmentList: ArrayList<Schedul
             scheduleAppointment.daysSelected?.friday?.let { tintChipIfCheck(chipFriday, it) }
             scheduleAppointment.daysSelected?.saturday?.let { tintChipIfCheck(chipSaturday, it) }
             scheduleAppointment.daysSelected?.sunday?.let { tintChipIfCheck(chipSunday, it) }
+
+            isCheckCard.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked){
+                    SessionCache.ListCheckToDelete.add(scheduleAppointment)
+                }else{
+                    SessionCache.ListCheckToDelete.remove(scheduleAppointment)
+                }
+                view.validateButtonTrashVisibility()
+            }
         }
 
         private fun tintChipIfCheck(chip:TextView,isCheck:Boolean){

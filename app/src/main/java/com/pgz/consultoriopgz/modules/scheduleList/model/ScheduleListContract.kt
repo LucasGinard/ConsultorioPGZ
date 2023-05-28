@@ -4,6 +4,7 @@ interface ScheduleListContract {
     interface View{
         fun showEmptyBanner()
         fun showListSchedule()
+        fun validateButtonTrashVisibility()
     }
 
     interface Presenter{

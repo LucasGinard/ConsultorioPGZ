@@ -42,6 +42,10 @@ class ScheduleListActivity: AppCompatActivity(), ScheduleListContract.View {
         binding.btnAddSchedule.setOnClickListener {
             startActivity(Intent(this, ScheduleAppointmentActivity::class.java))
         }
+
+        binding.btnDelete.setOnClickListener {
+
+        }
     }
 
     private fun configureListSchedules(){
@@ -58,6 +62,14 @@ class ScheduleListActivity: AppCompatActivity(), ScheduleListContract.View {
     override fun showListSchedule() {
         binding.rvSchedules.visibility = View.VISIBLE
         binding.showIsEmptySection.visibility = View.GONE
+    }
+
+    override fun validateButtonTrashVisibility() {
+        if (SessionCache.ListCheckToDelete.isEmpty()){
+            binding.btnDelete.visibility = View.GONE
+        }else{
+            binding.btnDelete.visibility = View.VISIBLE
+        }
     }
 
 }

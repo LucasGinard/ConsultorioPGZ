@@ -7,5 +7,6 @@ class SessionCache {
     companion object{
         var listClients:ArrayList<ClientEntity> = ArrayList()
         var listSchedules:ArrayList<ScheduleAppointmentEntity> = ArrayList()
+        var ListCheckToDelete:ArrayList<ScheduleAppointmentEntity> = ArrayList()
     }
 }
