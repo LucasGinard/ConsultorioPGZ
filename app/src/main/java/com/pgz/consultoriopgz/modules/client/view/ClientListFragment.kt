@@ -1,16 +1,13 @@
 package com.pgz.consultoriopgz.modules.client.view
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.pgz.consultoriopgz.databinding.FragmentListClientsBinding
-
 
 class ClientListFragment:Fragment() {
 
