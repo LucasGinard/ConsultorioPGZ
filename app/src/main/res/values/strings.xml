@@ -2,7 +2,8 @@
     <string name="app_name">Consultorio PGZ</string>
 
     <string name="title_about">Acerca de</string>
-    <string name="title_client">Registrar Usuario</string>
+    <string name="title_client">Usuarios</string>
+    <string name="title_register_client">Registrar Usuario</string>
     <string name="title_schedule">Registro Medicamentos</string>
     <string name="title_list">Listado de Medicamentos</string>
 
