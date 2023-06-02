@@ -11,13 +11,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.pgz.consultoriopgz.R
 import com.pgz.consultoriopgz.databinding.FragmentRegisterClientBinding
-import com.pgz.consultoriopgz.modules.client.model.ClientContract
-import com.pgz.consultoriopgz.modules.client.presenter.ClientPresenter
+import com.pgz.consultoriopgz.modules.client.model.ClientRegisterContract
+import com.pgz.consultoriopgz.modules.client.presenter.ClientRegisterPresenter
 
-class ClientRegisterFragment: Fragment(), ClientContract.View {
+class ClientRegisterFragment: Fragment(), ClientRegisterContract.View {
 
     private lateinit var _binding: FragmentRegisterClientBinding
-    private lateinit var presenter: ClientPresenter
+    private lateinit var presenter: ClientRegisterPresenter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,7 +25,7 @@ class ClientRegisterFragment: Fragment(), ClientContract.View {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegisterClientBinding.inflate(inflater, container, false)
-        presenter = ClientPresenter(this)
+        presenter = ClientRegisterPresenter(this)
         configureUI()
         configureOnClickListeners()
         configureValidateInputs()

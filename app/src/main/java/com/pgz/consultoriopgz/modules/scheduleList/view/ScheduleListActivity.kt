@@ -46,12 +46,12 @@ class ScheduleListActivity: AppCompatActivity(), ScheduleListContract.View {
         }
 
         binding.btnDelete.setOnClickListener {
-            presenter.removeScheduleCheck(SessionCache.listCheckToDelete)
+            presenter.removeScheduleCheck(SessionCache.listCheckToDeleteSchedule)
         }
     }
 
     private fun configureListSchedules(){
-         adapter = ScheduleListAdapter(SessionCache.listSchedules,this)
+        adapter = ScheduleListAdapter(SessionCache.listSchedules,this)
         binding.rvSchedules.layoutManager = LinearLayoutManager(this)
         binding.rvSchedules.adapter = adapter
     }
@@ -67,7 +67,7 @@ class ScheduleListActivity: AppCompatActivity(), ScheduleListContract.View {
     }
 
     override fun validateButtonTrashVisibility() {
-        if (SessionCache.listCheckToDelete.isEmpty()){
+        if (SessionCache.listCheckToDeleteSchedule.isEmpty()){
             binding.btnDelete.visibility = View.GONE
         }else{
             binding.btnDelete.visibility = View.VISIBLE

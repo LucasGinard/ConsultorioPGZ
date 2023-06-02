@@ -1,8 +1,8 @@
 package com.pgz.consultoriopgz.modules.client.presenter
 
 import com.pgz.consultoriopgz.data.entitys.ClientEntity
-import com.pgz.consultoriopgz.modules.client.model.ClientContract
-import com.pgz.consultoriopgz.modules.client.repository.ClientRepository
+import com.pgz.consultoriopgz.modules.client.model.ClientRegisterContract
+import com.pgz.consultoriopgz.modules.client.repository.ClientRegisterRepository
 import com.pgz.consultoriopgz.utils.SessionCache
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Exception
 
-class ClientPresenter(var view: ClientContract.View): ClientContract.Presenter {
+class ClientRegisterPresenter(var view: ClientRegisterContract.View): ClientRegisterContract.Presenter {
 
     var isValidName = false
     var isValidNameLastr = false
@@ -22,7 +22,7 @@ class ClientPresenter(var view: ClientContract.View): ClientContract.Presenter {
     var cellphone:String = ""
     var idNumber:Int = 0
 
-    var repository:ClientRepository = ClientRepository()
+    var repository:ClientRegisterRepository = ClientRegisterRepository()
 
     override fun addClient() {
         val newClient = ClientEntity(name,lastName,idNumber,cellphone)

@@ -2,7 +2,7 @@ package com.pgz.consultoriopgz.modules.client.model
 
 import com.pgz.consultoriopgz.data.entitys.ClientEntity
 
-interface ClientContract {
+interface ClientRegisterContract {
     interface View{
         fun isValidNewClient()
         fun isNotValidNewClient()

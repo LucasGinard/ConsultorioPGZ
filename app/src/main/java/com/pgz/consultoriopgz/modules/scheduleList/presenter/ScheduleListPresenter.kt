@@ -12,7 +12,7 @@ import java.lang.Exception
 
 class ScheduleListPresenter(var view: ScheduleListContract.View): ScheduleListContract.Presenter {
 
-    val repository = ScheduleListRepository()
+    private val repository = ScheduleListRepository()
 
     override fun validateListForShowListOrBanner() {
         if (SessionCache.listSchedules.isEmpty()){
@@ -29,6 +29,7 @@ class ScheduleListPresenter(var view: ScheduleListContract.View): ScheduleListCo
                     repository.deleteSchedule(schedule)
                     SessionCache.listSchedules.remove(schedule)
                 }
+                SessionCache.listCheckToDeleteSchedule.clear()
                 launch(Dispatchers.Main) {
                     view.updateList()
                 }
