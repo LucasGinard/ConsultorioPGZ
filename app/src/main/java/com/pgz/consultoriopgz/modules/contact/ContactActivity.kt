@@ -30,6 +30,10 @@ class ContactActivity: AppCompatActivity() {
     }
 
     private fun configureOnClickListeners(){
+        binding.header.btnArrowBack.setOnClickListener {
+            finish()
+        }
+
         binding.tvPhone.setOnClickListener {
             val callIntent = Intent(Intent.ACTION_CALL)
             callIntent.data = Uri.parse("tel:${binding.tvPhone.text}")
@@ -45,8 +49,22 @@ class ContactActivity: AppCompatActivity() {
             }
         }
 
-        binding.header.btnArrowBack.setOnClickListener {
-            finish()
+        binding.tvAsesor.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            val twitterUrl = "https://twitter.com"
+
+            val packageManager = packageManager
+            val twitterAppIntent = Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name="))
+            val resolveInfo = packageManager.queryIntentActivities(twitterAppIntent, 0)
+
+            if (resolveInfo.isNotEmpty()) {
+                intent.data = Uri.parse(twitterUrl)
+                intent.setPackage("com.twitter.android")
+            } else {
+                intent.data = Uri.parse(twitterUrl)
+            }
+
+            startActivity(intent)
         }
     }
 
