@@ -27,6 +27,7 @@
         <activity android:name=".modules.client.view.ClientActivity"/>
         <activity android:name=".modules.schedule.view.ScheduleAppointmentActivity"/>
         <activity android:name=".modules.scheduleList.view.ScheduleListActivity"/>
+        <activity android:name=".modules.contact.ContactActivity"/>
     </application>
 
 </manifest>

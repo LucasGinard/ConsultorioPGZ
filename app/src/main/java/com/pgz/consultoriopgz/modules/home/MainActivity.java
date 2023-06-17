@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.pgz.consultoriopgz.R;
 import com.pgz.consultoriopgz.modules.about.AboutActivity;
 import com.pgz.consultoriopgz.modules.client.view.ClientActivity;
+import com.pgz.consultoriopgz.modules.contact.ContactActivity;
 import com.pgz.consultoriopgz.modules.home.model.ContractMain;
 import com.pgz.consultoriopgz.modules.home.presenter.MainPresenter;
 import com.pgz.consultoriopgz.modules.schedule.view.ScheduleAppointmentActivity;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
 
     CardView cardClient,cardAbout,cardList,cardSchedule;
     MainPresenter presenter;
+    Button btnContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
         cardClient = findViewById(R.id.cardAddClient);
         cardList = findViewById(R.id.cardList);
         cardSchedule = findViewById(R.id.cardNewSchule);
+        btnContact = findViewById(R.id.btnContact);
     }
 
     private void configureOnClickListeners(){
@@ -61,6 +65,10 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
             }
         });
 
+        btnContact.setOnClickListener(v -> {
+            goToContact();
+        });
+
     }
 
     private void getDataSave(){
@@ -84,6 +92,10 @@ public class MainActivity extends AppCompatActivity implements ContractMain.View
     }
     private void gotToListSchedule(){
         Intent intent = new Intent(this, ScheduleListActivity.class);
+        startActivity(intent);
+    }
+    private void goToContact(){
+        Intent intent = new Intent(this, ContactActivity.class);
         startActivity(intent);
     }
 
