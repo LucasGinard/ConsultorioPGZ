@@ -7,6 +7,8 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.pgz.consultoriopgz.R
 import com.pgz.consultoriopgz.databinding.ActivityContactBinding
 
 class ContactActivity: AppCompatActivity() {
@@ -18,11 +20,16 @@ class ContactActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityContactBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        configureCallPhone()
-        configureContactAdviser()
+        configureUI()
+        configureOnClickListeners()
     }
 
-    private fun configureCallPhone(){
+    private fun configureUI(){
+        binding.header.tvTitleHeader.text = "Contacto"
+        binding.header.icLogo.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_phone))
+    }
+
+    private fun configureOnClickListeners(){
         binding.tvPhone.setOnClickListener {
             val callIntent = Intent(Intent.ACTION_CALL)
             callIntent.data = Uri.parse("tel:${binding.tvPhone.text}")
@@ -37,6 +44,10 @@ class ContactActivity: AppCompatActivity() {
                 )
             }
         }
+
+        binding.header.btnArrowBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun requirePermissionForCall():Boolean{
@@ -46,7 +57,4 @@ class ContactActivity: AppCompatActivity() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun configureContactAdviser(){
-
-    }
 }
